@@ -1,5 +1,8 @@
-import useForm from "@/hooks/useForm"
-import '../styles/Home.css'
+import useForm from "@/hooks/useForm";
+import '../styles/App.css';
+import '../styles/index.css';
+
+import Head from 'next/head'
 
 import { GrFormNext, GrFormPrevious, GrFormSubtract } from 'react-icons/gr';
 import { FiSend } from 'react-icons/fi';
@@ -13,14 +16,20 @@ export default function Home() {
     isLastStep,
     isFirstStep
   } = useForm();
+
+
+
   return (
+    
+    
     <div className="app">
+  
       <div className='header'>
 
         Cadastro de Clientes Vila Pet Brasil
       </div>
-      <p>Esse cadastro respeita A Lei Geral de ProteÃ§Ã£o de Dados Pessoais.
-        Os dados informados sÃ£o usados somente para cumprimento de obrigaÃ§Ãµes fiscais e cadastro</p>
+      <p>Respeitamos a Lei Geral de Proteção de Dados Pessoais.
+        Os dados informados são usados somente para cumprimento de obrigações fiscais e cadastro</p>
 
       <div className='form-container'>
         <Steps currentStep={currentStep} />
@@ -32,7 +41,7 @@ export default function Home() {
               <span>Voltar</span>
             </button>)}
             {!isLastStep ? (<button type='submit'>
-              <span>AvanÃ§ar</span>
+              <span>Avançar</span>
               <GrFormNext />
             </button>) : (<button type='button'>
               <span>Enviar</span>
