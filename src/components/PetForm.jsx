@@ -181,7 +181,7 @@ const PetForm = ({handleChangeField,formState}) => {
     <div>
       <input 
         onChange={(e) => handleChangeField('castrated', e.target.value)}
-        checked={formState.castrated==="no"}
+        checked={formState.castrated==="Não"}
         type="radio" 
         id="no" 
         name="castrated" 

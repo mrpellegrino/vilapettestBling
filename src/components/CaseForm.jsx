@@ -25,32 +25,32 @@ const CaseForm = ({handleChangeField,formState}) => {
        onChange={(e)=>{
         handleChangeField('service',e.target.value)
       }}
-      checked={formState.service==="veterinaryServices"}
+        checked={formState.service==="veterinaryServices"}
         type="radio" 
         id="veterinaryServices" 
         name="service" 
-        value="Serviços Veterinarios" 
+        value="veterinaryServices" 
         required 
       />
       <label htmlFor="veterinaryServices">Serviços Veterinarios</label>
     </div>
   </div>
-  {formState.service==="Serviços Veterinarios"&&(
+
+  {formState.service==="veterinaryServices"&&(
       <div className="form-control"> 
-      <label htmlFor="veterinaryDescription">Descreva o que está acontecendo com seu pet:</label>
+      <label htmlFor="veterinaryDescription">Descreva resumidamente o que está acontecendo com seu pet:</label>
       <textarea
         name="veterinaryDescription" 
         id="veterinaryDescription" 
+        placeholder='Opcional' 
+        value={formState?.veterinaryDescription||''}
         onChange={(e)=>{
           handleChangeField('veterinaryDescription',e.target.value)
         }}
+        
       />
     </div>
   ) }
-
-
-
-
     </div>
   )
 }

@@ -100,6 +100,22 @@ const UserForm = ({handleChangeField,formState}) => {
           required
         />
       </div>
+
+      <div className="form-control"> 
+        <label htmlFor="city">Cidade e Estado:</label>
+        <input
+          onChange={(e) => {
+            handleChangeField('city', e.target.value);
+          }}
+          value={formState?.addressNumber || ''}
+          type="text" 
+          name="city" 
+          id="city" 
+          placeholder='Digite a sua Cidade e Estado' 
+          required
+        />
+      </div>
+
   <div className="form-control"> 
     <label htmlFor="addressComplement">Complemento:</label>
     <input

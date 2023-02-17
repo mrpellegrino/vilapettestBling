@@ -1,8 +1,9 @@
 import useForm from "@/hooks/useForm";
 import '../styles/App.css';
 import '../styles/index.css';
+import cadastrar from '../pages/api/CreatePipedriveNewdeal';
 
-import Head from 'next/head'
+
 
 import { GrFormNext, GrFormPrevious, GrFormSubtract } from 'react-icons/gr';
 import { FiSend } from 'react-icons/fi';
@@ -14,7 +15,8 @@ export default function Home() {
     currentComponent,
     changeStep,
     isLastStep,
-    isFirstStep
+    isFirstStep,
+    formState
   } = useForm();
 
 
@@ -33,21 +35,27 @@ export default function Home() {
 
       <div className='form-container'>
         <Steps currentStep={currentStep} />
-        <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
+        <form onSubmit={(e)=>cadastrar(formState)}>
           <div className='inputs-container'>{currentComponent}</div>
           <div className="actions">
             {isFirstStep ? (<span></span>) : (<button type='button' onClick={() => changeStep(currentStep - 1)}>
               <GrFormPrevious />
               <span>Voltar</span>
             </button>)}
-            {!isLastStep ? (<button type='submit'>
+            {!isLastStep ? (<button type='button' onClick={(e) => changeStep(currentStep + 1, e)}>
               <span>Avançar</span>
               <GrFormNext />
-            </button>) : (<button type='button'>
+            </button>) : (<button type='submit' 
+           >
               <span>Enviar</span>
               <FiSend />
             </button>)}
+            
           </div>
+          <button type='button' onClick={(e)=>cadastrar(formState)}>
+          <span>Teste</span>
+            </button>
+      
         </form>
       </div>
     </div>

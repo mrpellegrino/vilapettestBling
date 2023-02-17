@@ -18,7 +18,7 @@ export default function useForm() {
             <UserForm handleChangeField={handleChangeField} formState={formState} key='UserForm' />,
             <PetForm handleChangeField={handleChangeField} formState={formState} key='PetForm' />,
             <CaseForm handleChangeField={handleChangeField} formState={formState} key='CaseForm' />,
-            <Thanks key='Thanks' />
+           /* <Thanks key='Thanks' />*/
         ];
 
     function changeStep(i, e) {
@@ -29,6 +29,7 @@ export default function useForm() {
         setCurrentStep(i);
     }
 
+ 
 
     return {
         currentStep,
