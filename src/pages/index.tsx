@@ -70,14 +70,7 @@ export default function Home() {
               <span>Enviar</span>
               <FiSend />
             </button>)}
-          </div>
-):""}
-         
-         
-          <button type='button' onClick={(e)=>console.log(formState)}>
-          <span>Teste</span>
-            </button>
-      
+          </div>):""}      
         </form>
       </div>
     </div>
