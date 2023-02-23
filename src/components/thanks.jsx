@@ -1,19 +1,29 @@
-import Script from 'next/script'
-import React from 'react'
-import link from 'next/link';
-import {useEffect} from 'react';
 
-useEffect(() => { 
-  setTimeout(function() {
-  window.location.href = <link>"http://www.devmedia.com.br"</link>}, 5000); }, []);
+import React from 'react'
+
+
+import Head from 'next/head';
+
+
 
 
         const thanks = ({handleChangeField,formState}) => {
+          const name = formState.name;
+          const cpf = formState.cpf;
+          const url= "5; url='https://wa.me/5531975166552?text=Concluí meu cadastro com sucesso. Nome:*"+formState.name+"* Cpf:*"+formState.cpf+"*";
         return (
+          <>
         <div>  <h2>Muito Obrigado pelo seu cadastro!</h2>
           <p>O Cadastro foi executado com sucesso, você será redirecionado novamente ao nosso Whatsapp.</p>
-        </div>
-          )
+        </div> 
+        <Head> 
+        <meta http-equiv="refresh" content={url} />
+        </Head>
+        </>
+        )
+         
+         
+
       }
 
       export default thanks;

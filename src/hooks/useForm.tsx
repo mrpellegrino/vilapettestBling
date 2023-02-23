@@ -17,9 +17,9 @@ export default function useForm() {
 
     const formComponents =
         [
-           // <UserForm handleChangeField={handleChangeField} formState={formState} key='UserForm' />,
-           // <PetForm handleChangeField={handleChangeField} formState={formState} key='PetForm' />,
-          //  <CaseForm handleChangeField={handleChangeField} formState={formState} key='CaseForm' />,
+            <UserForm handleChangeField={handleChangeField} formState={formState} key='UserForm' />,
+            <PetForm handleChangeField={handleChangeField} formState={formState} key='PetForm' />,
+           <CaseForm handleChangeField={handleChangeField} formState={formState} key='CaseForm' />,
             <Thanks handleChangeField={handleChangeField} formState={formState} key='Thanks'/>
         ];
 
