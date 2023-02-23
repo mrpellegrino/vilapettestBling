@@ -5,13 +5,14 @@
     box-sizing: border-box;
     color: #333;
   }
-  p{
+  .legenda{
     color: #777;
-    max-width: 600px;
-    margin: 0 auto;
     margin-bottom: 1rem;
+    font-size: .5rem;
   }
 
   body{
     background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
   }

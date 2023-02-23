@@ -1,64 +1,41 @@
-import {NextApiRequest, NextApiResponse} from 'next';
-import {useState} from 'react';
+import { formPayload } from '@/interfaces/IformPayload';
 
-interface formPayload {
-    fullName:string;
-    cpf:string;
-    address:string;
-    telephone:string;
-    zipCode:string;
-    neighborhood:string;
-    addressNumber:string;
-    addressComplement:string;
-    petName:string;
-    species:string;
-    gender:string;
-    breed:string;
-    temperament:string;
-    coatColor:string;
-    petWeight:string;
-    birthday:string;
-    castrated:string;
-    service:string;
-    veterinaryDescription:string;
-    city:string;
-}
 
 async function  CreatePipedriveNewdeal(formState:formPayload)
 {
 
-
-   const fullName =formState.fullName;
-   const    cpf =formState.cpf;
-   const    address =formState.address;
-   const   telephone =formState.telephone;
-   const   zipCode =formState.zipCode;   
-   const   neighborhood =formState.neighborhood;
-   const   addressNumber =formState.addressNumber;
-   const  addressComplement =formState.addressComplement;
-   const  city =formState.city;
-    const   petName =formState.petName;
-    const  species =formState.species;
-    const gender =formState.gender;
-    const  breed =formState.breed;
-    const temperament =formState.temperament;
-    const  coatColor =formState.coatColor;
-    const  petWeight =formState.petWeight;
-    const   birthday =formState.birthday;
-    const  castrated =formState.castrated;
-    const   service =formState.service;
-    const   veterinaryDescription=formState.veterinaryDescription;
+const tutor =formState.name;
+const cpf =formState.cpf;
+const address =formState.address;
+const telephone =formState.telephone;
+const zipCode =formState.zipCode;   
+const neighborhood =formState.neighborhood;
+const addressNumber =formState.addressNumber;
+const addressComplement =formState.addressComplement;
+const city =formState.city;
+const petName =formState.petName;
+const species =formState.species;
+const gender =formState.gender;
+const breed =formState.breed;
+const temperament =formState.temperament;
+const coatColor =formState.coatColor;
+const petWeight =formState.petWeight;
+const birthday =formState.birthday;
+const castrated =formState.castrated;
+const service =formState.service;
+const veterinaryDescription=formState.veterinaryDescription;
 
     const api_token = '4eb75180f20983ca454feb40fd0616485a0e5af1';
     const base_url = 'https://vilapetbrasil.pipedrive.com/api/v1';
 
     try {
+
+      
         // add a person
         const addPersonFormData = new FormData();
 
-        addPersonFormData.append('name', fullName);
+        addPersonFormData.append('name', tutor);
         addPersonFormData.append('phone', telephone);
-        addPersonFormData.append('whatsapp', telephone);
         addPersonFormData.append('1b4c959c21faf49ae39634444f284248efbcf1ad', cpf);
         addPersonFormData.append('9953b8b995c0770ecba08abae1cdcb7d770964fa', address);
         addPersonFormData.append('56f4072cc67f6684c77d6015acd75db7baa68f99', zipCode);
@@ -73,13 +50,15 @@ async function  CreatePipedriveNewdeal(formState:formPayload)
         body: addPersonFormData,
     });
 
+    
     const clonePersonResponse = await personResponse.clone().json();
-
+   
     const personId = clonePersonResponse.data.id;
+    const name = clonePersonResponse.data.name;
 
     // add a lead
     const addLeadFormData = JSON.stringify({
-        title: fullName,
+        title: name,
         person_id: personId,
     });
 
@@ -95,11 +74,12 @@ async function  CreatePipedriveNewdeal(formState:formPayload)
     // add a deal
     const addDealFormData = new FormData();
 
-    addDealFormData.append('title', fullName);
+    
     addDealFormData.append('person_id', personId);
+    addDealFormData.append('title', name);
     addDealFormData.append('78f84bf9366de7b38f80835c0f5112a84886fc00', petName);
     addDealFormData.append('2481beda85f7c9161fa0a697997d3ec94c2b7dae', species);
-    addDealFormData.append('503d945eb5f5df732f7acd70899fd7cbca142536', fullName);
+    addDealFormData.append('503d945eb5f5df732f7acd70899fd7cbca142536', name);
     addDealFormData.append('bd85167a03ffbe413adbe69767425c71c01d6113', telephone);
     addDealFormData.append('84602f5bb24d6783fdc06c7c5fec95c8da90c07d', breed);
     addDealFormData.append('7273a5627609bf0cc1bfb87989cef5ec4f74b785', temperament);
@@ -157,5 +137,7 @@ async function  CreatePipedriveNewdeal(formState:formPayload)
     alert('Erro ao enviar formulário. Tente novamente mais tarde.');
 }
 }
+
+
 
 export default CreatePipedriveNewdeal;

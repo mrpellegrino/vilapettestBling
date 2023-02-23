@@ -8,15 +8,15 @@ const UserForm = ({handleChangeField,formState}) => {
     <div>
       <h2>Dados do tutor</h2>
       <div className="form-control"> 
-    <label htmlFor="fullName">Nome Completo:</label>
+    <label htmlFor="name">Nome Completo:</label>
     <input
     onChange={(e)=>{
-      handleChangeField('fullname',e.target.value)
+      handleChangeField('name',e.target.value)
     }}
-    value={formState?.fullname||''}
+    value={formState?.name||''}
       type="text" 
-      name="fullName" 
-      id="fullName" 
+      name="name" 
+      id="name" 
       placeholder='Digite seu nome completo' 
       required   />
   </div>
@@ -107,7 +107,7 @@ const UserForm = ({handleChangeField,formState}) => {
           onChange={(e) => {
             handleChangeField('city', e.target.value);
           }}
-          value={formState?.addressNumber || ''}
+          value={formState?.city || ''}
           type="text" 
           name="city" 
           id="city" 

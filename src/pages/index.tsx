@@ -1,8 +1,9 @@
 import useForm from "@/hooks/useForm";
 import '../styles/App.css';
 import '../styles/index.css';
-import cadastrar from '../pages/api/CreatePipedriveNewdeal';
-
+import cadastrar from '../pages/api/cadastrar';
+import Image from 'next/image'
+import logo from '../../public/vila-pet-logo-05.png';
 
 
 import { GrFormNext, GrFormPrevious, GrFormSubtract } from 'react-icons/gr';
@@ -14,45 +15,66 @@ export default function Home() {
   const { currentStep,
     currentComponent,
     changeStep,
+    isLastButOneStep,
     isLastStep,
     isFirstStep,
     formState
   } = useForm();
 
-
-
   return (
-    
-    
-    <div className="app">
-  
-      <div className='header'>
 
-        Cadastro de Clientes Vila Pet Brasil
+    <div className="app">  
+      <div className='header'>
+        <div className="logo">
+        <Image src={logo} 
+        alt="Picture of the author"      
+        /> 
+        </div>
+        <h2>Cadastro de Clientes Vila Pet Brasil</h2>
       </div>
-      <p>Respeitamos a Lei Geral de Proteção de Dados Pessoais.
+      <p className="legenda">Respeitamos a Lei Geral de Proteção de Dados Pessoais.
         Os dados informados são usados somente para cumprimento de obrigações fiscais e cadastro</p>
 
       <div className='form-container'>
-        <Steps currentStep={currentStep} />
-        <form onSubmit={(e)=>cadastrar(formState)}>
+       
+        <Steps currentStep={currentStep}></Steps>
+      
+     
+      
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+         { 
+          const feito = isLastButOneStep?cadastrar(formState):'';
+          changeStep(currentStep + 1)}
+        }
+
+
+          }>
+
           <div className='inputs-container'>{currentComponent}</div>
+          
+          
+          
+          {!isLastStep?(
+
+            
           <div className="actions">
             {isFirstStep ? (<span></span>) : (<button type='button' onClick={() => changeStep(currentStep - 1)}>
               <GrFormPrevious />
               <span>Voltar</span>
             </button>)}
-            {!isLastStep ? (<button type='button' onClick={(e) => changeStep(currentStep + 1, e)}>
+            {!(isLastButOneStep) ? (<button type='submit'>
               <span>Avançar</span>
               <GrFormNext />
-            </button>) : (<button type='submit' 
-           >
+            </button>) : (<button type='submit'>
               <span>Enviar</span>
               <FiSend />
             </button>)}
-            
           </div>
-          <button type='button' onClick={(e)=>cadastrar(formState)}>
+):""}
+         
+         
+          <button type='button' onClick={(e)=>console.log(formState)}>
           <span>Teste</span>
             </button>
       

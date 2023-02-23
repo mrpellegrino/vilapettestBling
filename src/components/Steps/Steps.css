@@ -1,33 +1,27 @@
 .steps{
     display: flex;
-    gap: 4rem;
-    justify-content: center;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content:center;
+    align-items: start;
+    width: 100%;
     margin-bottom: 2rem;
+    align-items: center;
 }
 
-.steps::after{
-    content: "";
-    width: 380px;
-    border-bottom: 1px solid #ccc;
-    position: absolute;
-    top: 50px;
-}
+
 
 .step{
     text-align: center;
     background-color: #fff;
-    z-index: 1;
-    width: 100px;
-    padding: 1rem;
+    font-size: 60%;
+
 }
 
 .step svg{
-    font-size: 1.6rem;
+  
     margin-bottom: .2rem;
+    font-size: 200%;
 
 }
 
