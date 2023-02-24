@@ -1,6 +1,6 @@
 export interface formPayload {
-    name:string;
-    cpf:string;
+    name:string,
+    cpf:string,
     address:string;
     telephone:string;
     zipCode:string;
@@ -19,5 +19,6 @@ export interface formPayload {
     service:string;
     veterinaryDescription:string;
     city:string;
+    howMeetUs:string;
 }
 

@@ -6,9 +6,11 @@ import Image from 'next/image'
 import logo from '../../public/vila-pet-logo-05.png';
 
 
+
 import { GrFormNext, GrFormPrevious, GrFormSubtract } from 'react-icons/gr';
 import { FiSend } from 'react-icons/fi';
 import Steps from "@/components/Steps/Steps";
+import consultaCEp from './api/consultaCep';
 
 export default function Home() {
 
@@ -70,7 +72,9 @@ export default function Home() {
               <span>Enviar</span>
               <FiSend />
             </button>)}
-          </div>):""}      
+          </div>):""} 
+
+               
         </form>
       </div>
     </div>

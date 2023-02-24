@@ -24,6 +24,7 @@ const birthday =formState.birthday;
 const castrated =formState.castrated;
 const service =formState.service;
 const veterinaryDescription=formState.veterinaryDescription;
+const howMeetUs =formState.howMeetUs;
 
     const api_token = '4eb75180f20983ca454feb40fd0616485a0e5af1';
     const base_url = 'https://vilapetbrasil.pipedrive.com/api/v1';
@@ -43,6 +44,7 @@ const veterinaryDescription=formState.veterinaryDescription;
         addPersonFormData.append('e2095ef6c479aa9bea3b062f9b5f0709a431c4da', addressNumber);
         addPersonFormData.append('fc2cb1c4ada8432629d40ffea62aaf00c5930499', addressComplement);
         addPersonFormData.append('ff722b6b8b033a62836582d6672d6a30ee611cb2', city);
+        addPersonFormData.append('b1c7b2ce56743f46b421d492319be82c3162b6f2',howMeetUs);
     
 
     const personResponse = await fetch(`${base_url}/persons?api_token=${api_token}`, {

@@ -4,6 +4,20 @@ const CaseForm = ({handleChangeField,formState}) => {
   return (
     <div><h2>Serviço Solicitado</h2>
 
+    <div className="form-control"> 
+    <label htmlFor="howMeetUs">Como conheçeu o Vila:</label>
+    <input
+      onChange={(e)=>{
+        handleChangeField('howMeetUs',e.target.value)
+      }}
+      value={formState?.howMeetUs||''}
+      type="text" 
+      name="howMeetUs" 
+      id="howMeetUs" 
+      placeholder='Conte como nos conheceu' 
+      required   />
+  </div>
+
 <div className="form-control"> 
     <label htmlFor="service">Qual serviço você deseja solicitar?</label>
     <div>

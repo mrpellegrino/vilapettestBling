@@ -1,9 +1,10 @@
 
 
 import React from 'react'
-
+import consultaCEp from '../pages/api/consultaCep'
 
 const UserForm = ({handleChangeField,formState}) => {
+  
   return (
     <div>
       <h2>Dados do tutor</h2>
@@ -52,7 +53,15 @@ const UserForm = ({handleChangeField,formState}) => {
     <input
       onChange={(e)=>{
         handleChangeField('zipCode',e.target.value)
-      }}
+      }} 
+      onBlur={async() => {const address = await consultaCEp(formState.zipCode)
+        console.log(address)
+        formState.address=address.logradouro;
+        formState.neighborhood=address.bairro
+        formState.city=address.localidade+' / '+ address.uf
+        
+        }}
+
       value={formState?.zipCode||''}
       type="text" 
       name="zipCode" 
@@ -60,6 +69,20 @@ const UserForm = ({handleChangeField,formState}) => {
       placeholder='Digite seu CEP' 
       required   />
   </div>
+  <div className="form-control"> 
+        <label htmlFor="addressNumber">Número:</label>
+        <input
+          onChange={(e) => {
+            handleChangeField('addressNumber', e.target.value);
+          }}
+          value={formState?.addressNumber || ''}
+          type="text" 
+          name="addressNumber" 
+          id="addressNumber" 
+          placeholder='Digite o número da sua casa' 
+          required
+        />
+      </div>
   <div className="form-control"> 
     <label htmlFor="address">Endereço :</label>
     <input
@@ -86,20 +109,6 @@ const UserForm = ({handleChangeField,formState}) => {
           placeholder='Digite o nome do Seu Bairro'
           required  />
   </div>
-  <div className="form-control"> 
-        <label htmlFor="addressNumber">Número:</label>
-        <input
-          onChange={(e) => {
-            handleChangeField('addressNumber', e.target.value);
-          }}
-          value={formState?.addressNumber || ''}
-          type="text" 
-          name="addressNumber" 
-          id="addressNumber" 
-          placeholder='Digite o número da sua casa' 
-          required
-        />
-      </div>
 
       <div className="form-control"> 
         <label htmlFor="city">Cidade e Estado:</label>
