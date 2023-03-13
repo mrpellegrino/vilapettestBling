@@ -20,5 +20,6 @@ export interface formPayload {
     veterinaryDescription:string;
     city:string;
     howMeetUs:string;
+    uf:string
 }
 

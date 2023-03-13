@@ -10,9 +10,34 @@ import logo from '../../public/vila-pet-logo-05.png';
 import { GrFormNext, GrFormPrevious, GrFormSubtract } from 'react-icons/gr';
 import { FiSend } from 'react-icons/fi';
 import Steps from "@/components/Steps/Steps";
-import consultaCEp from './api/consultaCep';
+import { formPayload } from '@/interfaces/IformPayload';
 
 export default function Home() {
+  const pessoa:formPayload = {
+    name: 'João da Silva teste',
+    cpf: '923.277.760-66',
+    address: 'Rua das Flores, 123',
+    telephone: '(11) 98765-4321',
+    zipCode: '01234-567',
+    neighborhood: 'Jardim das Rosas',
+    addressNumber: '123',
+    addressComplement: 'Apto 456',
+    petName: 'Mel',
+    species: 'Cachorro',
+    gender: 'Fêmea',
+    breed: 'Vira-lata',
+    temperament: 'Brincalhona',
+    coatColor: 'Preto',
+    petWeight: '10kg',
+    birthday: '01/01/2015',
+    castrated: 'Sim',
+    service: 'Consulta',
+    veterinaryDescription: 'Check-up geral',
+    city: 'São Paulo',
+    howMeetUs: 'Indicação de amigo',
+    uf: 'SP'
+  };
+  
 
   const { currentStep,
     currentComponent,
@@ -73,6 +98,11 @@ export default function Home() {
               <FiSend />
             </button>)}
           </div>):""} 
+
+          <button type='button' onClick={async() =>await cadastrar(pessoa)}>
+              <span>Enviar</span>
+              <FiSend />
+            </button>
 
                
         </form>
