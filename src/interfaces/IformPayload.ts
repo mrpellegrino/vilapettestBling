@@ -1,4 +1,4 @@
-export interface formPayload {
+export default interface formPayload {
     name:string,
     cpf:string,
     address:string;
